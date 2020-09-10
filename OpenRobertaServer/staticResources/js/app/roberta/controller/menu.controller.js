@@ -612,6 +612,9 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
         $('.menuFaq').onWrap('click', function(event) {
             window.open("https://jira.iais.fraunhofer.de/wiki/display/ORInfo/FAQ");
         }, 'head navigation menu item clicked');
+		$('.shortcut').onWrap('click', function(event) {
+            window.open("https://jira.iais.fraunhofer.de/wiki/display/ORInfo/FAQ");
+        }, 'head navigation menu item clicked');
         $('.menuAboutProject').onWrap('click', function(event) {
             if (GUISTATE_C.getLanguage() == 'de') {
                 window.open("https://www.roberta-home.de/index.php?id=135");
@@ -823,6 +826,52 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 expr.setInTask(false);
                 return false;
             }
+            //Overriding the Ctrl + S for saving the program in the local machine
+            if ((e.metaKey || e.ctrlKey) && event.which == 83) {
+                e.preventDefault();
+                PROGRAM_C.showSaveAsModal();
+            }
+			//Overriding the Ctrl + Alt + S for saving the program in the server
+            if ((e.metaKey || e.ctrlKey) && (e.altKey) && event.which == 83) {
+                e.preventDefault();
+				PROGRAM_C.saveToServer();
+			}
+            //Overriding the Ctrl + P for creating a new program
+            if ((e.metaKey || e.ctrlKey) && event.which == 80) {
+                e.preventDefault();
+                PROGRAM_C.newProgram();
+			}
+			//Overriding the Ctrl + E for saving the configuration
+            if ((e.metaKey || e.ctrlKey) && event.which == 69) {
+                e.preventDefault();
+  				alert("Ctrl-Alt-I pressed");
+				CONFIGURATION_C.showSaveAsModal();
+			}       
+			//Overriding the Ctrl + Alt + R for running the program
+            if ((e.metaKey || e.ctrlKey) && (e.altKey) && event.which == 82) {
+                e.preventDefault();
+                RUN_C.runOnBrick();
+			}
+			//Overriding the Ctrl + C for showing the source code
+            if ((e.metaKey || e.ctrlKey) && event.which == 67) {
+                e.preventDefault();
+                $('#codeButton').trigger("click");
+			}
+			//Overriding the Ctrl + Alt + C for showing the source code editor
+            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 67) {
+                e.preventDefault();
+				$('#tabSourceCodeEditor').trigger("click");
+			}
+			//Overriding the Ctrl + Alt + J for switching robot
+            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 74) {
+                e.preventDefault();
+				ROBOT_C.switchRobot(choosenRobotType);	
+			}	
+			//Overriding the Ctrl + Y for starting the welcome tour
+            if ((e.metaKey || e.ctrlKey) && event.which == 89) {
+                e.preventDefault();
+				TOUR_C.start('welcome');    
+			}		     
         });
     }
 });

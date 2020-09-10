@@ -158,6 +158,7 @@ limitations under the License.
                                 <a href="https://www.roberta-home.de/index.php?id=137&L=1" target="_blank" class="typcn typcn-info-large EN">privacy policy</a></li>
                             <li><a href="https://www.roberta-home.de/impressum" target="_blank" class="typcn typcn-info-large DE">Impressum</a> <a
                                 href="https://www.roberta-home.de/impressum/?L=1" target="_blank" class="typcn typcn-info-large EN">publishing notes</a></li>
+                            <li><a href="#" data-toggle="modal" class="typcn typcn-info-large" data-target="#shortcut">Keyboard Shortcuts</a></li>
                         </ul></li>
                     <!--   Menu User -->
                     <li class="dropdown" id="head-navigation-user"><a href="#" data-toggle="dropdown" class="dropdown-toggle" id="head-navi-tooltip-user"
@@ -212,7 +213,7 @@ limitations under the License.
                             <li><a role="menuitem" href="#" class="lang-lbl" lang="zh-hant"></a></li>
                             <li><a role="menuitem" href="#" class="lang-lbl" lang="ro"></a></li>
                             <li><a role="menuitem" href="#" class="lang-lbl" lang="eu"></a></li>
-                        </ul></li>
+                        </ul>
                     <!-- Menu Navigation -->
                     <li class="divider visible-xs"></li>
                     <li><a href="#" class="visible-xs" id="menuTabProgram" lkey="Blockly.Msg.TAB_PROGRAM">Program</a></li>
@@ -1119,6 +1120,38 @@ limitations under the License.
             </div>
         </div>
     </div>
+    <!-- Popup to show keyboard shortcuts -->
+	<div class="modal fade" id="shortcut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <ol type = "1">
+			         <li>CTRL + 1: Import Source code to compile</li>
+			         <li>CTRL + 2: Import Nepo code to compile </li>
+			         <li>CTRL + 3: Initiate Debugger</li>
+			         <li>Ctrl + S: Save the program in your computer</li>
+			         <li>Ctrl + Alt + S: Save the program in the server</li>
+			         <li>Ctrl + P: Create a new program</li>
+			         <li>Ctrl + E: Save the configuration</li>
+			         <li>Ctrl + Alt + R: Run the program</li>
+			         <li>Ctrl + C: Show the source code</li>
+			         <li>Ctrl + Alt + C: Show the source code editor</li>
+			         <li>Ctrl + Alt + J: Switch robot</li>
+			         <li>Ctrl + Y: Start the welcome tour</li>
+			      </ol>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
     <!-- Popup show state info -->
     <div id="show-state-info" class="modal fade">
         <div class="modal-dialog modal-sm">
