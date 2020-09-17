@@ -836,42 +836,83 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 e.preventDefault();
 				PROGRAM_C.saveToServer();
 			}
-            //Overriding the Ctrl + P for creating a new program
-            if ((e.metaKey || e.ctrlKey) && event.which == 80) {
+            //Overriding the Ctrl + Q for creating a new program
+            if ((e.metaKey || e.ctrlKey) && event.which == 81) {
                 e.preventDefault();
                 PROGRAM_C.newProgram();
 			}
-			//Overriding the Ctrl + E for saving the configuration
-            if ((e.metaKey || e.ctrlKey) && event.which == 69) {
+			//Overriding the Ctrl + Alt + S for saving the configuration
+            if ((e.metaKey || e.ctrlKey) && (e.altKey) && event.which == 83) {
                 e.preventDefault();
-  				alert("Ctrl-Alt-I pressed");
 				CONFIGURATION_C.showSaveAsModal();
 			}       
-			//Overriding the Ctrl + Alt + R for running the program
-            if ((e.metaKey || e.ctrlKey) && (e.altKey) && event.which == 82) {
+			//Overriding the Ctrl + R for running the program
+            if ((e.metaKey || e.ctrlKey) && event.which == 82) {
                 e.preventDefault();
                 RUN_C.runOnBrick();
 			}
-			//Overriding the Ctrl + C for showing the source code
-            if ((e.metaKey || e.ctrlKey) && event.which == 67) {
+			//Overriding the Ctrl + Z for showing the source code
+            if ((e.metaKey || e.ctrlKey) && event.which == 90) {
                 e.preventDefault();
                 $('#codeButton').trigger("click");
 			}
-			//Overriding the Ctrl + Alt + C for showing the source code editor
-            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 67) {
+			//Overriding the Ctrl + Alt + Z for showing the source code editor
+            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 90) {
                 e.preventDefault();
 				$('#tabSourceCodeEditor').trigger("click");
 			}
-			//Overriding the Ctrl + Alt + J for switching robot
-            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 74) {
+			//Overriding the Ctrl + Alt + Y for multiple robot simulation
+            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 89) {
                 e.preventDefault();
-				ROBOT_C.switchRobot(choosenRobotType);	
+				MULT_SIM.showListProg();	
 			}	
-			//Overriding the Ctrl + Y for starting the welcome tour
-            if ((e.metaKey || e.ctrlKey) && event.which == 89) {
+			//Overriding the Ctrl + W for viewing all programs
+            if ((e.metaKey || e.ctrlKey) && event.which == 87) {
                 e.preventDefault();
-				TOUR_C.start('welcome');    
-			}		     
+				$('#tabProgList').click();	     
+			}	
+			//Overriding the Ctrl + G for viewing the simulation window
+            if ((e.metaKey || e.ctrlKey) && event.which == 71) {
+                e.preventDefault();
+				$('#simButton').trigger('click');
+			}
+			//Overriding the Ctrl + G for viewing the simulation window
+            if ((e.metaKey || e.ctrlKey) && event.which == 71) {
+                e.preventDefault();
+				$('#simButton').trigger('click');
+			}
         });
     }
+
+	// Creating and passing the list of the shortcuts to index.html
+	var options = [
+        set0 = ['CTRL + 1: Import Source code to compile','CTRL + 2: Import Nepo code to compile', 'CTRL + 3: Initiate Debugger', 
+				'Ctrl + 4: Assert and expression', 'Ctrl + 5: Evaluate expression', 'Ctrl + 6: Gets gyrosensor reading', 
+				'Ctrl + S: Save the program in your computer', 'Ctrl + Alt + S: Save the program or configuration in the server', 
+				'Ctrl + Q: Create a new program', 'Ctrl + R: Run the program', 'Ctrl + Z: Show the source code', 
+				'Ctrl + Alt + Z: Show the source code editor', 'Ctrl + Alt + Y: Multiple robot simulation', 'Ctrl + W: Viweing all programs', 
+				'Ctrl + G: Open the simulation window']
+    ];
+
+	function makeUL(array) {
+    // Create the list element:
+	    var list = document.createElement('ul');
+	
+	    for(var i = 0; i < array.length; i++) {
+	        // Create the list item:
+	        var item = document.createElement('li');
+	
+	        // Set its contents:
+	        item.appendChild(document.createTextNode(array[i]));
+	
+	        // Add it to the list:
+	        list.appendChild(item);
+	    }
+	
+	    // Finally, return the constructed list:
+	    return list;
+	}
+	
+	// Add the contents of options[0] to #shortcuts in line 1133 in index.html:
+	document.getElementById('shortcuts').appendChild(makeUL(options[0]));
 });

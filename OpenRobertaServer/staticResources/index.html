@@ -79,29 +79,29 @@ limitations under the License.
                             class="head-navi-title hidden-sm hidden-md hidden-lg" lkey="Blockly.Msg.MENU_EDIT"></span>
                     </a>
                         <ul class="dropdown-menu">
-                            <li class="menuRunProg"><a href="#" id="menuRunProg" class="typcn typcn-media-play" lkey="Blockly.Msg.MENU_START_BRICK">run
-                                    on brick</a></li>
-                            <li><a href="#" id="menuRunSim" class="typcn typcn-simulation" lkey="Blockly.Msg.MENU_START_SIM">run in simulation</a></li>
+                        	<li class="menuRunProg"><a href="#"><span id="menuRunProg" class="typcn typcn-media-play" lkey="Blockly.Msg.MENU_START_BRICK">run
+                                    on brick</span><span class="kbd text-muted">Ctrl+R</span></a></li>
+                            <li><a href="#"><span id="menuRunSim" class="typcn typcn-simulation" lkey="Blockly.Msg.MENU_START_SIM">run in simulation</span><span class="kbd text-muted">Ctrl+G</span></a></li>
                             <li id="robotDefaultFirmware" class="hidden menuRunProg"><a href="#" id="menuDefaultFirmware" class="typcn typcn-arrow-sync"
                                 lkey="Blockly.Msg.MENU_RESET_FIRMWARE">reset to the factory defaults</a></li>
-                            <li><a href="#" id="menuNewProg" class="typcn typcn-document-add" lkey="Blockly.Msg.MENU_NEW">neu ...</a></li>
-                            <li class="login"><a href="#" id="menuListProg" class="typcn typcn-th-list" lkey="Blockly.Msg.MENU_LIST_PROG">Liste ...</a></li>
-                            <li class="login"><a href="#" id="menuRunMulipleSim" class="typcn typcn-open" lkey="Blockly.Msg.MENU_RUN_MULT_SIM">run
-                                    multiple robot simulation</a></li>
+                            <li><a href="#"><span id="menuNewProg" class="typcn typcn-document-add" lkey="Blockly.Msg.MENU_NEW">neu...</span><span class="kbd text-muted">Ctrl+R</span></a></li>
+                            <li class="login"><a href="#"><span id="menuListProg" class="typcn typcn-th-list" lkey="Blockly.Msg.MENU_LIST_PROG">Liste ...</span><span class="kbd text-muted">Ctrl+W</span></a></li>
+                            <li class="login"><a href="#"><span id="menuRunMulipleSim" class="typcn typcn-open" lkey="Blockly.Msg.MENU_RUN_MULT_SIM">run
+                                    multiple robot simulation</span><span class="kbd text-muted">Ctrl+Alt+Y</span></a></li>
                             <li><a href="#" id="menuListExamples" class="typcn typcn-th-list" lkey="Blockly.Msg.MENU_LIST_PROG_EXAMPLES">Beispielprogramme
                                     ...</a></li>
-                            <li class="login"><a href="#" id="menuSaveProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE">speichern</a></li>
-                            <li class="login"><a href="#" id="menuSaveAsProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE_AS">speichern
-                                    unter ...</a></li>
-                            <li class=""><a href="#" id="menuShowCode" class="typcn typcn-code" lkey="Blockly.Msg.MENU_SHOW_CODE">show code</a></li>
-                            <li class=""><a href="#" id="menuSourceCodeEditor" class="typcn typcn-edit" lkey="Blockly.Msg.MENU_SOURCE_CODE_EDITOR">open
-                                    source code editor</a></li>
+                            <li class="login"><a href="#"><span id="menuSaveProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE">speichern</span><span class="kbd text-muted">Ctrl+Alt+S</span></a></li>
+                            <li class="login"><a href="#"><span id="menuSaveAsProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE_AS">speichern
+                                    unter ...</span><span class="kbd text-muted">Ctrl+S</span></a></li>
+                            <li class=""><a href="#"><span id="menuShowCode" class="typcn typcn-code" lkey="Blockly.Msg.MENU_SHOW_CODE">show code</span><span class="kbd text-muted">Ctrl+Z</span></a></li>
+                            <li class=""><a href="#"><span id="menuSourceCodeEditor" class="typcn typcn-edit" lkey="Blockly.Msg.MENU_SOURCE_CODE_EDITOR">open
+                                    source code editor</span><span class="kbd text-muted">Ctrl+Alt+G</span></a></li>
                             <li class=""><a href="#" id="menuLinkProg" class="typcn typcn-link" lkey="Blockly.Msg.MENU_CREATE_LINK">erstelle
                                     Programmlink ...</a></li>
                             <li class=""><a href="#" id="menuExportProg" class="typcn typcn-download" lkey="Blockly.Msg.MENU_EXPORT_PROG">export
                                     program</a></li>
-                            <li class=""><a href="#" id="menuImportProg" class="typcn typcn-upload" lkey="Blockly.Msg.MENU_IMPORT_PROG">import program
-                                    ...</a></li>
+                            <li class=""><a href="#"><span id="menuImportProg" class="typcn typcn-upload" lkey="Blockly.Msg.MENU_IMPORT_PROG">import program
+                                    ...</span><span class="kbd text-muted">Ctrl+2</span></a></li>
                             <li class="hidden"><a href="#" id="menuAttachProg" class="" lkey="Blockly.Msg.MENU_ATTACH">anhängen ...</a></li>
                             <li class="hidden"><a href="#" id="menuPropertiesProg" class="" lkey="Blockly.Msg.MENU_PROPERTIES">Eigenschaften</a></li>
                             <li class="divider"></li>
@@ -1130,22 +1130,7 @@ limitations under the License.
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <div class="modal-body">
-	        <ol type = "1">
-			         <li>CTRL + 1: Import Source code to compile</li>
-			         <li>CTRL + 2: Import Nepo code to compile </li>
-			         <li>CTRL + 3: Initiate Debugger</li>
-			         <li>Ctrl + S: Save the program in your computer</li>
-			         <li>Ctrl + Alt + S: Save the program in the server</li>
-			         <li>Ctrl + P: Create a new program</li>
-			         <li>Ctrl + E: Save the configuration</li>
-			         <li>Ctrl + Alt + R: Run the program</li>
-			         <li>Ctrl + C: Show the source code</li>
-			         <li>Ctrl + Alt + C: Show the source code editor</li>
-			         <li>Ctrl + Alt + J: Switch robot</li>
-			         <li>Ctrl + Y: Start the welcome tour</li>
-			      </ol>
-	      </div>
+	      <div class="modal-body" id="shortcuts"></div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	      </div>
@@ -1607,3 +1592,5 @@ limitations under the License.
     </div>
 </body>
 </html>
+
+
