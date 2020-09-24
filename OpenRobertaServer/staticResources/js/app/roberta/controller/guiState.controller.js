@@ -4,8 +4,6 @@ define([ 'exports', 'util', 'log', 'message', 'guiState.model', 'progHelp.contro
     var LONG = 300000; // Ping time 5min
     var SHORT = 3000; // Ping time 3sec
 
-	var NOTCONNECTED = 60000; // Ping time 1min	
-	var CONNECTED = 5000; // Ping time 5sec	
     /**
      * Init robot
      */
@@ -19,6 +17,7 @@ define([ 'exports', 'util', 'log', 'message', 'guiState.model', 'progHelp.contro
                 });
 
             }
+
             GUISTATE.gui.view = 'tabProgram';
             GUISTATE.gui.prevView = 'tabProgram';
             GUISTATE.gui.language = language;
@@ -368,13 +367,6 @@ define([ 'exports', 'util', 'log', 'message', 'guiState.model', 'progHelp.contro
             setPingTime(SHORT);
             break;
         }
-
-		if(isRobotConnected == true) {	
-			setPingTime(CONNECTED);	
-		}	
-		else {	
-			setPingTime(NOTCONNECTED)	
-		}
 		
         var groupSwitched = false;
         if (findGroup(robot) != getRobotGroup()) {
