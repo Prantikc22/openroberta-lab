@@ -914,6 +914,7 @@ div.rightMenuButton:hover,
     position: absolute;
     right: 20px;
     top: 3px;
+    font-size: 12px;
 }
 
 .dropdown-menu > li > a {

@@ -510,7 +510,7 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
             case 'menuLogin':
                 USER_C.showLoginForm();
                 break;
-            case 'menuUserGroupLogin':	
+            case 'menuUserGroupLogin':
                 USER_C.showUserGroupLoginForm();	
                 break;
             case 'menuLogout':
@@ -771,11 +771,15 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 IMPORT_C.importSourceCodeToCompile();
                 return false;
             }
-            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '2')) {
+            if ((e.metaKey || e.ctrlKey) && event.which == 73) {
                 IMPORT_C.importNepoCodeToCompile();
                 return false;
             }
-            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '3')) {
+			if ((e.metaKey || e.ctrlKey) && event.which == 69) {
+                PROGRAM_C.exportXml();
+                return false;
+            }
+            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '2')) {
                 var debug = GUISTATE_C.getBlocklyWorkspace().newBlock('robActions_debug');
                 debug.initSvg();
                 debug.render();
@@ -783,7 +787,7 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
 
                 return false;
             }
-            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '4')) {
+            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '3')) {
                 var assert = GUISTATE_C.getBlocklyWorkspace().newBlock('robActions_assert');
                 assert.initSvg();
                 assert.setInTask(false);
@@ -799,7 +803,7 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 parentConnection.connect(childConnection);
                 return false;
             }
-            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '5')) {
+            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '4')) {
                 var expr = GUISTATE_C.getBlocklyWorkspace().newBlock('robActions_eval_expr');
                 expr.initSvg();
                 expr.render();
@@ -807,7 +811,7 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 return false;
             }
             // for IMU sensors of Arduino Uno Wifi Rev2, go to config first to create brickly workspace
-            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '6')) {
+            if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which) === '5')) {
                 var expr = GUISTATE_C.getBricklyWorkspace().newBlock('robConf_accelerometer');
                 expr.initSvg();
                 expr.render();
@@ -826,93 +830,75 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 expr.setInTask(false);
                 return false;
             }
-            //Overriding the Ctrl + S for saving the program in the local machine
-            if ((e.metaKey || e.ctrlKey) && event.which == 83) {
+			//Overriding the Shift + S when not logged in
+            if ((e.metaKey || e.shiftKey) && event.which == 83 && !GUISTATE_C.isUserLoggedIn()) {
                 e.preventDefault();
-                PROGRAM_C.showSaveAsModal();
             }
-			//Overriding the Ctrl + Alt + S for saving the program in the server
-            if ((e.metaKey || e.ctrlKey) && (e.altKey) && event.which == 83) {
+            //Overriding the Shift + S for saving program with new name in the server
+            if ((e.metaKey || e.shiftKey) && event.which == 83 && GUISTATE_C.isUserLoggedIn()) {
                 e.preventDefault();
-				PROGRAM_C.saveToServer();
-			}
-            //Overriding the Ctrl + Q for creating a new program
-            if ((e.metaKey || e.ctrlKey) && event.which == 81) {
+				PROGRAM_C.showSaveAsModal();
+            }
+			//Overriding the Ctrl + S when not logged in
+            if ((e.metaKey || e.ctrlKey) && event.which == 83 && !GUISTATE_C.isUserLoggedIn()) {
                 e.preventDefault();
-                PROGRAM_C.newProgram();
-			}
-			//Overriding the Ctrl + Alt + S for saving the configuration
-            if ((e.metaKey || e.ctrlKey) && (e.altKey) && event.which == 83) {
+            }
+			//Overriding the Ctrl + S for saving the program in the database on the server
+            if ((e.metaKey || e.ctrlKey) && event.which == 83 && GUISTATE_C.isUserLoggedIn()) {
                 e.preventDefault();
-				CONFIGURATION_C.showSaveAsModal();
-			}       
+				if(GUISTATE_C.getProgramName() === "NEPOprog") {
+					PROGRAM_C.showSaveAsModal();
+				}
+				else {
+					PROGRAM_C.saveToServer();
+				}
+				return false;
+				
+			}     
 			//Overriding the Ctrl + R for running the program
             if ((e.metaKey || e.ctrlKey) && event.which == 82) {
                 e.preventDefault();
                 RUN_C.runOnBrick();
+				return false;	
 			}
 			//Overriding the Ctrl + Z for showing the source code
             if ((e.metaKey || e.ctrlKey) && event.which == 90) {
                 e.preventDefault();
                 $('#codeButton').trigger("click");
+				return false;
 			}
-			//Overriding the Ctrl + Alt + Z for showing the source code editor
-            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 90) {
+			//Overriding the Shift + Z for showing the source code editor
+            if ((e.metaKey || e.shiftKey) && event.which == 90) {
                 e.preventDefault();
 				$('#tabSourceCodeEditor').trigger("click");
+				return false;
 			}
-			//Overriding the Ctrl + Alt + Y for multiple robot simulation
-            if ((e.metaKey || e.ctrlKey)  && (e.altKey) && event.which == 89) {
+			//Overriding the Shift + G when not logged in
+            if ((e.metaKey || e.shiftKey) && event.which == 71 && !GUISTATE_C.isUserLoggedIn()) {
                 e.preventDefault();
-				MULT_SIM.showListProg();	
+            }
+			//Overriding the Shift + G for multiple robot simulation
+            if ((e.metaKey || e.shiftKey) && event.which == 71 && GUISTATE_C.isUserLoggedIn()) {
+                e.preventDefault();
+				MULT_SIM.showListProg();
+				return false;
 			}	
-			//Overriding the Ctrl + W for viewing all programs
-            if ((e.metaKey || e.ctrlKey) && event.which == 87) {
+			//Overriding the Ctrl + M when not logged in
+            if ((e.metaKey || e.ctrlKey) && event.which == 77 && !GUISTATE_C.isUserLoggedIn()) {
                 e.preventDefault();
-				$('#tabProgList').click();	     
+            }
+			//Overriding the Ctrl + M for viewing all programs
+            if ((e.metaKey || e.ctrlKey) && event.which == 77 && GUISTATE_C.isUserLoggedIn()) {
+                e.preventDefault();
+				$('#tabProgList').click();
+				return false;     
 			}	
 			//Overriding the Ctrl + G for viewing the simulation window
             if ((e.metaKey || e.ctrlKey) && event.which == 71) {
                 e.preventDefault();
 				$('#simButton').trigger('click');
-			}
-			//Overriding the Ctrl + G for viewing the simulation window
-            if ((e.metaKey || e.ctrlKey) && event.which == 71) {
-                e.preventDefault();
-				$('#simButton').trigger('click');
+				return false;
 			}
         });
     }
-
-	// Creating and passing the list of the shortcuts to index.html
-	var options = [
-        set0 = ['CTRL + 1: Import Source code to compile','CTRL + 2: Import Nepo code to compile', 'CTRL + 3: Initiate Debugger', 
-				'Ctrl + 4: Assert and expression', 'Ctrl + 5: Evaluate expression', 'Ctrl + 6: Gets gyrosensor reading', 
-				'Ctrl + S: Save the program in your computer', 'Ctrl + Alt + S: Save the program or configuration in the server', 
-				'Ctrl + Q: Create a new program', 'Ctrl + R: Run the program', 'Ctrl + Z: Show the source code', 
-				'Ctrl + Alt + Z: Show the source code editor', 'Ctrl + Alt + Y: Multiple robot simulation', 'Ctrl + W: Viweing all programs', 
-				'Ctrl + G: Open the simulation window']
-    ];
-
-	function makeUL(array) {
-    // Create the list element:
-	    var list = document.createElement('ul');
-	
-	    for(var i = 0; i < array.length; i++) {
-	        // Create the list item:
-	        var item = document.createElement('li');
-	
-	        // Set its contents:
-	        item.appendChild(document.createTextNode(array[i]));
-	
-	        // Add it to the list:
-	        list.appendChild(item);
-	    }
-	
-	    // Finally, return the constructed list:
-	    return list;
-	}
-	
-	// Add the contents of options[0] to #shortcuts in line 1133 in index.html:
-	document.getElementById('shortcuts').appendChild(makeUL(options[0]));
 });

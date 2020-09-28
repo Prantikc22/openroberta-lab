@@ -84,24 +84,24 @@ limitations under the License.
                             <li><a href="#"><span id="menuRunSim" class="typcn typcn-simulation" lkey="Blockly.Msg.MENU_START_SIM">run in simulation</span><span class="kbd text-muted">Ctrl+G</span></a></li>
                             <li id="robotDefaultFirmware" class="hidden menuRunProg"><a href="#" id="menuDefaultFirmware" class="typcn typcn-arrow-sync"
                                 lkey="Blockly.Msg.MENU_RESET_FIRMWARE">reset to the factory defaults</a></li>
-                            <li><a href="#"><span id="menuNewProg" class="typcn typcn-document-add" lkey="Blockly.Msg.MENU_NEW">neu...</span><span class="kbd text-muted">Ctrl+R</span></a></li>
-                            <li class="login"><a href="#"><span id="menuListProg" class="typcn typcn-th-list" lkey="Blockly.Msg.MENU_LIST_PROG">Liste ...</span><span class="kbd text-muted">Ctrl+W</span></a></li>
+                            <li><a href="#"><span id="menuNewProg" class="typcn typcn-document-add" lkey="Blockly.Msg.MENU_NEW">neu...</a></li>
+                            <li class="login"><a href="#"><span id="menuListProg" class="typcn typcn-th-list" lkey="Blockly.Msg.MENU_LIST_PROG">Liste ...</span><span class="kbd text-muted">Ctrl+M</span></a></li>
                             <li class="login"><a href="#"><span id="menuRunMulipleSim" class="typcn typcn-open" lkey="Blockly.Msg.MENU_RUN_MULT_SIM">run
-                                    multiple robot simulation</span><span class="kbd text-muted">Ctrl+Alt+Y</span></a></li>
+                                    multiple robot simulation</span><span class="kbd text-muted">Shift+G</span></a></li>
                             <li><a href="#" id="menuListExamples" class="typcn typcn-th-list" lkey="Blockly.Msg.MENU_LIST_PROG_EXAMPLES">Beispielprogramme
                                     ...</a></li>
-                            <li class="login"><a href="#"><span id="menuSaveProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE">speichern</span><span class="kbd text-muted">Ctrl+Alt+S</span></a></li>
+                            <li class="login"><a href="#"><span id="menuSaveProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE">speichern</span><span class="kbd text-muted">Ctrl+S</span></a></li>
                             <li class="login"><a href="#"><span id="menuSaveAsProg" class="typcn typcn-cloud-storage" lkey="Blockly.Msg.MENU_SAVE_AS">speichern
-                                    unter ...</span><span class="kbd text-muted">Ctrl+S</span></a></li>
+                                    unter ...</span><span class="kbd text-muted">Shift+S</span></a></li>
                             <li class=""><a href="#"><span id="menuShowCode" class="typcn typcn-code" lkey="Blockly.Msg.MENU_SHOW_CODE">show code</span><span class="kbd text-muted">Ctrl+Z</span></a></li>
                             <li class=""><a href="#"><span id="menuSourceCodeEditor" class="typcn typcn-edit" lkey="Blockly.Msg.MENU_SOURCE_CODE_EDITOR">open
-                                    source code editor</span><span class="kbd text-muted">Ctrl+Alt+G</span></a></li>
+                                    source code editor</span><span class="kbd text-muted">Shift+Z</span></a></li>
                             <li class=""><a href="#" id="menuLinkProg" class="typcn typcn-link" lkey="Blockly.Msg.MENU_CREATE_LINK">erstelle
                                     Programmlink ...</a></li>
-                            <li class=""><a href="#" id="menuExportProg" class="typcn typcn-download" lkey="Blockly.Msg.MENU_EXPORT_PROG">export
-                                    program</a></li>
+                            <li class=""><a href="#"><span id="menuExportProg" class="typcn typcn-download" lkey="Blockly.Msg.MENU_EXPORT_PROG">export
+                                    program</span><span class="kbd text-muted">Ctrl+E</span></a></li>
                             <li class=""><a href="#"><span id="menuImportProg" class="typcn typcn-upload" lkey="Blockly.Msg.MENU_IMPORT_PROG">import program
-                                    ...</span><span class="kbd text-muted">Ctrl+2</span></a></li>
+                                    ...</span><span class="kbd text-muted">Ctrl+I</span></a></li>
                             <li class="hidden"><a href="#" id="menuAttachProg" class="" lkey="Blockly.Msg.MENU_ATTACH">anhängen ...</a></li>
                             <li class="hidden"><a href="#" id="menuPropertiesProg" class="" lkey="Blockly.Msg.MENU_PROPERTIES">Eigenschaften</a></li>
                             <li class="divider"></li>
@@ -1121,16 +1121,31 @@ limitations under the License.
         </div>
     </div>
     <!-- Popup to show keyboard shortcuts -->
-	<div class="modal fade" id="shortcut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal fade in" id="shortcut">
+	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
+	      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h3 class="modal-title" id="exampleModalLabel" lkey="Blockly.Msg.MENU_SHORTCUT">Keyboard Shortcuts</h3>
 	      </div>
-	      <div class="modal-body" id="shortcuts"></div>
+	      <div class="modal-body" id="shortcuts">
+	      	<ol type = "1">
+					 <li lkey="Blockly.Msg.SHORTCUT_IMPORT"></li>
+					 <li lkey="Blockly.Msg.SHORTCUT_EXPORT"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_SAVE"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_SAVEAS"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_RUN"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_SOURCE_CODE"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_OPEN_SIM"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_MULTISIM"></li>
+			         <li lkey="Blockly.Msg.SHORTCUT_VIEW_PROGRAM"></li>
+					 <li lkey="Blockly.Msg.SHORTCUT_IMPORTNEPO"></li>
+					 <li lkey="Blockly.Msg.SHORTCUT_INITIATE_DEBUGGER"></li>
+					 <li lkey="Blockly.Msg.SHORTCUT_ASSERT"></li>
+					 <li lkey="Blockly.Msg.SHORTCUT_EVALUATE"></li>
+					 <li lkey="Blockly.Msg.SHORTCUT_GYROSENSOR_READING"></li>
+			 </ol>
+		  </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	      </div>
