@@ -911,7 +911,6 @@ define([ 'exports', 'log', 'util', 'message', 'comm', 'robot.controller', 'socke
                 PROGRAM_C.exportXml();
                 return false;
             }
-
         });
     }
 });
