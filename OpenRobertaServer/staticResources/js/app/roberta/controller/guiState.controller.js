@@ -2,7 +2,7 @@ define(['exports', 'util', 'log', 'message', 'guiState.model', 'progHelp.control
     exports, UTIL, LOG, MSG, GUISTATE, HELP_C, LEGAL_C, WEBVIEW_C, CV, SOCKET_C, $) {
 
     var LONG = 300000; // Ping time 5min
-    var SHORT = 3000; // Ping time 3sec
+    var SHORT = 5000; // Ping time 5sec
     /**
      * Init robot
      */
@@ -371,6 +371,12 @@ define(['exports', 'util', 'log', 'message', 'guiState.model', 'progHelp.control
                 setPingTime(SHORT);
                 break;
         }
+
+		if(isRobotConnected == true){
+			setPingTime(SHORT);
+		} else {
+			setPingTime(LONG);s
+		}
 
         var groupSwitched = false;
         if (findGroup(robot) != getRobotGroup()) {
